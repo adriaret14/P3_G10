@@ -4,7 +4,7 @@
 
 Player::Player(int tipoIconos)
 {
-	if (tipoIconos == 0)
+	if (tipoIconos == 1)
 	{
 		NPCs.push_back(new NPC('A'));
 		NPCs.push_back(new NPC('B'));
@@ -28,4 +28,23 @@ Player::Player(int tipoIconos)
 
 Player::~Player()
 {
+}
+
+NPC Player::getNPC(char c)
+{
+	std::list<NPC*>::iterator it= NPCs.begin();
+
+	while (it != NPCs.end())
+	{
+		if ((*it)->getIcon() == c)
+		{
+			return *(*it);
+			break;
+		}
+		else
+		{
+			it++;
+		}
+
+	}
 }

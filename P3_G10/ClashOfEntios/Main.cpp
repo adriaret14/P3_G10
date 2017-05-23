@@ -47,7 +47,7 @@ void main()
 	}*/
 
 	Player p1(1);
-	Player p2();
+	Player p2(0);
 
-	std::cout << p1.
+	std::cout << p1.getNPC('A').getHp();
 }

@@ -2,14 +2,9 @@
 
 
 
-Map::Map()
-{
-}
-
-
 Map::Map(std::string url)
 {
-	std::ifstream archivo;
+	/*std::ifstream archivo;
 	std::string linia;
 
 
@@ -28,7 +23,7 @@ Map::Map(std::string url)
 	}
 
 
-	archivo.close();
+	archivo.close();*/
 }
 
 Map::~Map()
