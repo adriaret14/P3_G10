@@ -2,7 +2,8 @@
 
 
 
-Player::Player(int tipoIconos)
+Player::Player(int tipoIconos):
+	movimientos(0)
 {
 	if (tipoIconos == 1)
 	{

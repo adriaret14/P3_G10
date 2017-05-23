@@ -11,5 +11,6 @@ public:
 
 private:
 	std::list<NPC*> NPCs;							//Lista de NPCs de cada personaje, usamos lista por su facilidad de eliminar el objeto cuando lo eliminas de la lista, entre otros
+	int movimientos;
 };
 

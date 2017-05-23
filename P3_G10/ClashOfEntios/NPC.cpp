@@ -37,7 +37,7 @@ float NPC::getFatiga()
 
 void NPC::setFlechas(int nf)
 {
-	nFlechas = nf;
+	nFlechas += nf;
 }
 
 int NPC::getFlechas()
@@ -73,4 +73,24 @@ void NPC::setY(int n)
 int NPC::getY()
 {
 	return y;
+}
+
+void NPC::setLastX(int n)
+{
+	lastX += n;
+}
+
+int NPC::getLastX()
+{
+	return lastX;
+}
+
+void NPC::setLastY(int n)
+{
+	lastY += n;
+}
+
+int NPC::getLastY()
+{
+	return lastY;
 }
