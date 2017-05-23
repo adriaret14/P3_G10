@@ -40,6 +40,16 @@ Map::~Map()
 	mapa.~vector();
 }
 
+char Map::getCell(int x, int y)
+{
+	return mapa[y][x];
+}
+
+void Map::updCell(char c, int x, int y)
+{
+	mapa[y][x] = c;
+}
+
 void Map::print()
 {
 	for (int j = 0; j < 36; j++) 
