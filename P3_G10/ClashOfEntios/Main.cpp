@@ -1,12 +1,13 @@
 #include <iostream>
 #include "NPC.h"
+#include "Player.h"
 #include <list>
 
 
 void main()
 {
 	//Creación de la lista de NPC's del jugador 1
-	std::list<NPC*> NPC_Player_A;
+	/*std::list<NPC*> NPC_Player_A;
 
 	NPC_Player_A.push_back(new NPC('A'));
 	NPC_Player_A.push_back(new NPC('B'));
@@ -43,5 +44,10 @@ void main()
 	{
 		std::cout << (*itb)->getIcon() << std::endl;
 		itb++;
-	}
+	}*/
+
+	Player p1(1);
+	Player p2();
+
+	std::cout << p1.
 }

@@ -4,10 +4,12 @@
 class Player
 {
 public:
-	Player(std::list<NPC*> &);						//Constructor por defecto de Player, pasando como referencia la lista de puntero de NPC
+	Player(int);									//Constructor por defecto de Player, pasando como parametro un entero con el que decidiremos si los iconos son numeros o letras
 	~Player();										//Destructor de Player
 
+	NPC getNPC(std::list<NPC*>::iterator);			//Metodo para consultar un NPC
+
 private:
-	std::list<NPC*> &NPCs;
+	std::list<NPC*> NPCs;							//Lista de NPCs de cada personaje, usamos lista por su facilidad de eliminar el objeto cuando lo eliminas de la lista, entre otros
 };
 

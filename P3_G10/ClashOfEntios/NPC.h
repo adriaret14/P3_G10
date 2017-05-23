@@ -17,6 +17,10 @@ public:
 	int getX();						//Metodo para consultar la coordenada x de un NPC
 	void setY(int);					//Metodo para establecer la coordenada y de un NPC
 	int getY();						//Metodo para consultar la coordenada y de un NPC
+	void setLastX(int);				//Metodo para establecer la coordenada LastX de un NPC
+	int getLastX();					//Metodo para consultar la coordenada LastX de un NPC
+	void setLastY(int);				//Metodo para establecer la coordenada LastY de un NPC
+	int getLastY();					//Metodo para consultar la coordenada LastY de un NPC
 
 private: 
 	char icon;					
@@ -25,5 +29,7 @@ private:
 	int hp;
 	int x;
 	int y;
+	int lastX;
+	int lastY;
 };
 
