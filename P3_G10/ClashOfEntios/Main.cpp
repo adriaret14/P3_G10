@@ -1,6 +1,7 @@
 #include <iostream>
 #include "NPC.h"
 #include "Player.h"
+#include "Map.h"
 #include <list>
 
 
@@ -48,6 +49,8 @@ void main()
 
 	Player p1(1);
 	Player p2(0);
+	//std::cout << p1.getNPC('A').getHp();
 
-	std::cout << p1.getNPC('A').getHp();
+	Map m("default.cfg");
+	//m.print();
 }

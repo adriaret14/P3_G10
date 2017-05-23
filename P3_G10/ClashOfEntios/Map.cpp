@@ -4,9 +4,9 @@
 
 Map::Map(std::string url)
 {
-	/*std::ifstream archivo;
-	std::string linia;
-
+	std::ifstream archivo;
+	std::string linea;
+	mapa = std::vector<std::vector<char>>(36, std::vector<char>(74));
 
 	archivo.open(url);
 
@@ -18,14 +18,38 @@ Map::Map(std::string url)
 	{
 		while (!archivo.eof())
 		{
-			std::getline(archivo, linia);
+			for (int j = 0; j < 36; j++) 
+			{
+				std::getline(archivo, linea);
+				for (int i = 0; i < linea.size(); i++)
+				{
+					mapa[j][i] = linea[i];
+				}
+			}
 		}
-	}
-
-
-	archivo.close();*/
+		archivo.close();
+	}	
 }
 
 Map::~Map()
 {
+	for (int i = 0; i < 36; i++)
+	{
+		mapa[i].~vector();
+	}
+	mapa.~vector();
 }
+
+void Map::print()
+{
+	for (int j = 0; j < 36; j++) 
+	{
+		for (int i = 0; i < 74; i++)
+		{
+			std::cout << mapa[j][i] << " ";
+		}
+		std::cout << std::endl;
+	}
+}
+
+
