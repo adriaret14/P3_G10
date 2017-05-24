@@ -52,5 +52,5 @@ void main()
 	//std::cout << p1.getNPC('A').getHp();
 
 	Map m("default.cfg");
-	//m.print();
+	m.print();
 }
