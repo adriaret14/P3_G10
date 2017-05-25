@@ -3,18 +3,22 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "Player.h"
+
 
 
 class Map
 {
 public:
-	Map(std::string);									//Consturctor de mapa, pasando como parametro el nombre del archivo a abrir
+	Map(std::string, Player &, Player &);									//Consturctor de mapa, pasando como parametro el nombre del archivo a abrir
 	~Map();												//Destructor de mapa
 
-	char getCell(int, int);
-	void updCell(char, int, int);
+	std::string getCell(int, int);
+	void updCell(std::string, int, int);
 	void print();
 
-	std::vector<std::vector<char>> mapa;				//Vector de vectores de chars donde esta almacenado el mapa, usamos vectores por la agilidad de acceso por índice
+	std::vector<std::vector<std::string>> mapa;				//Vector de vectores de chars donde esta almacenado el mapa, usamos vectores por la agilidad de acceso por índice
+	Player &player1;
+	Player &player2;
 };
 

@@ -51,6 +51,6 @@ void main()
 	Player p2(0);
 	//std::cout << p1.getNPC('A').getHp();
 
-	Map m("default.cfg");
+	Map m("default.cfg", p1, p2);
 	m.print();
 }

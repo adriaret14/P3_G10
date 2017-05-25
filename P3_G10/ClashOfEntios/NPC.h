@@ -1,12 +1,14 @@
 #pragma once
+#include <string>
+
 class NPC
 {
 public:
-	NPC(char);							//Constructor por defecto del NPC, pasando como parametro el icono
+	NPC(std::string);							//Constructor por defecto del NPC, pasando como parametro el icono
 	~NPC();							//Destructor de NPC
 						
-	void setIcon(char);				//Metodo para establecer el icono de un NPC, pasando como parametro el icono
-	char getIcon();					//Metodo para consultar el icono de un NPC
+	void setIcon(std::string);				//Metodo para establecer el icono de un NPC, pasando como parametro el icono
+	std::string getIcon();					//Metodo para consultar el icono de un NPC
 	void setFatiga(float);			//Metodo para establecer la fatiga de un NPC, pasando como parametro la fatiga a sumar
 	float getFatiga();				//Metodo para consultar la fatiga de un NPC
 	void setFlechas(int);			//Metodo para establecer el numero de flechas que posee un NPC, pasando como parametro las flechas
@@ -21,9 +23,12 @@ public:
 	int getLastX();					//Metodo para consultar la coordenada LastX de un NPC
 	void setLastY(int);				//Metodo para establecer la coordenada LastY de un NPC
 	int getLastY();					//Metodo para consultar la coordenada LastY de un NPC
+	void setTile(std::string);      //Metodo para guardar el terreno sobre el que se encuentra el npc
+	std::string getTile();
 
 private: 
-	char icon;					
+	std::string icon;
+	std::string tile;
 	float fatiga;
 	int nFlechas;
 	int hp;

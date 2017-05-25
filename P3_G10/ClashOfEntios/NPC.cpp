@@ -2,11 +2,12 @@
 
 
 
-NPC::NPC(char c) :
+NPC::NPC(std::string c) :
 	hp(10),
 	nFlechas(10),
 	fatiga(0),
-	icon(c)
+	icon(c),
+	tile(".")
 {
 }
 
@@ -15,19 +16,19 @@ NPC::~NPC()
 {
 }
 
-void NPC::setIcon(char c)
+void NPC::setIcon(std::string c)
 {
 	icon = c;
 }
 
-char NPC::getIcon()
+std::string NPC::getIcon()
 {
 	return icon;
 }
 
 void NPC::setFatiga(float f)
 {
-	fatiga += f;
+	fatiga = f;
 }
 
 float NPC::getFatiga()
@@ -37,7 +38,7 @@ float NPC::getFatiga()
 
 void NPC::setFlechas(int nf)
 {
-	nFlechas += nf;
+	nFlechas = nf;
 }
 
 int NPC::getFlechas()
@@ -47,7 +48,7 @@ int NPC::getFlechas()
 
 void NPC::setHp(int life)
 {
-	hp += life;
+	hp = life;
 }
 
 int NPC::getHp()
@@ -57,7 +58,7 @@ int NPC::getHp()
 
 void NPC::setX(int n)
 {
-	x += n;
+	x = n;
 }
 
 int NPC::getX()
@@ -67,7 +68,7 @@ int NPC::getX()
 
 void NPC::setY(int n)
 {
-	y += n;
+	y = n;
 }
 
 int NPC::getY()
@@ -77,7 +78,7 @@ int NPC::getY()
 
 void NPC::setLastX(int n)
 {
-	lastX += n;
+	lastX = n;
 }
 
 int NPC::getLastX()
@@ -87,10 +88,20 @@ int NPC::getLastX()
 
 void NPC::setLastY(int n)
 {
-	lastY += n;
+	lastY = n;
 }
 
 int NPC::getLastY()
 {
 	return lastY;
+}
+
+void NPC::setTile(std::string t)
+{
+	tile = t;
+}
+
+std::string NPC::getTile()
+{
+	return tile;
 }
