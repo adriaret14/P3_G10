@@ -49,3 +49,36 @@ NPC & Player::getNPC(std::string c)
 
 	}
 }
+
+void Player::setMovimientos(int n)
+{
+	movimientos = n;
+}
+
+int Player::getMovimientos()
+{
+	return movimientos;
+}
+
+void Player::modifyNPCList(std::string icono)
+{
+	std::list<NPC*>::iterator it = NPCs.begin();
+
+	while (it != NPCs.end())
+	{
+		if ((*it)->getIcon == icono)
+		{
+			NPCs.erase(it);
+			break;
+		}
+		else
+		{
+			it++;
+		}
+	}
+}
+
+int Player::getSizeNPCList()
+{
+	return NPCs.size();
+}

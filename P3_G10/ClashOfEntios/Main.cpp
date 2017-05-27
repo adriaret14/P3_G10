@@ -49,8 +49,49 @@ void main()
 
 	Player p1(1);
 	Player p2(0);
+	Map m("default.cfg", p1, p2);
+	int endgame = 0;
+	int turno = 1;
 	//std::cout << p1.getNPC('A').getHp();
 
-	Map m("default.cfg", p1, p2);
-	m.print();
+	do {
+		m.print();
+		system("cls");
+		
+		//Comprobacion de si un jugador es el ganador de la partida
+		if (p1.getSizeNPCList() < 1)
+		{
+			endgame = 2;
+		}
+		else if (p2.getSizeNPCList() < 1)
+		{
+			endgame = 1;
+		}
+		else
+		{
+			//Forma de asignar los turnos en Clash of Entios
+			if (turno == 1)
+			{
+				//Juega el player1
+
+				turno = 2;
+			}
+			else {
+				//Juega el player 2
+
+				turno = 1;
+			}
+		}
+		
+	} while (endgame == 0);
+
+	system("cls");
+
+	if (endgame == 1)
+	{
+		std::cout << "Ganador el PLAYER 1";
+	}
+	else {
+		std::cout << "Ganador el PLAYER 2";
+	}
 }
