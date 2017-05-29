@@ -96,19 +96,132 @@ void Interacciones::rehacerMovimiento(NPC & npc)
 	}
 }
 
-void Interacciones::ataque(NPC & npc, DIRECCION dir, ARMA arma)
+bool Interacciones::ataque(NPC & npc, DIRECCION dir, ARMA arma)
 {
 	std::string p1npcs = "ABCDEF";
 	std::string p2npcs = "123456";
+	int x;
+	int y;
+	switch (dir)
+	{
+	case DIRECCION::A:
+		x = -1;
+		y = 0;
+		break;
+	case DIRECCION::W:
+		x = 0;
+		y = -1;
+		break;
+	case DIRECCION::D:
+		x = 1;
+		y = 0;
+		break;
+	case DIRECCION::S:
+		x = 0;
+		y = 1;
+		break;
+	}
 	if (arma == ARMA::SWORD)
 	{
 		if (p1npcs.find(npc.getIcon()) != std::string::npos)
 		{
-
+			if (p2npcs.find(m.mapa[npc.getY() + y][npc.getX() + x]) != std::string::npos)
+			{
+				p2.getNPC(m.mapa[npc.getY() + y][npc.getX() + x]).setHp(p2.getNPC(m.mapa[npc.getY() + y][npc.getX() + x]).getHp()-10);
+				if (p2.getNPC(m.mapa[npc.getY() + y][npc.getX() + x]).getHp() <= 0)
+				{
+					std::string aux = p2.getNPC(m.mapa[npc.getY() + y][npc.getX() + x]).getTile();
+					p2.modifyNPCList(m.mapa[npc.getY() + y][npc.getX() + x]);
+					m.mapa[npc.getY() + y][npc.getX() + x] = aux;
+				}
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else if (p2npcs.find(npc.getIcon()) != std::string::npos)
 		{
-
+			if (p1npcs.find(m.mapa[npc.getY() + y][npc.getX() + x]) != std::string::npos)
+			{
+				p1.getNPC(m.mapa[npc.getY() + y][npc.getX() + x]).setHp(p1.getNPC(m.mapa[npc.getY() + y][npc.getX() + x]).getHp() - 10);
+				if (p1.getNPC(m.mapa[npc.getY() + y][npc.getX() + x]).getHp() <= 0)
+				{
+					std::string aux = p1.getNPC(m.mapa[npc.getY() + y][npc.getX() + x]).getTile();
+					p1.modifyNPCList(m.mapa[npc.getY() + y][npc.getX() + x]);
+					m.mapa[npc.getY() + y][npc.getX() + x] = aux;
+				}
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else if (arma == ARMA::BOW)
+	{
+		int mult = 0;
+		if (p1npcs.find(npc.getIcon()) != std::string::npos)
+		{
+			for (int i = 1; i <= 10; i++)
+			{
+				if (p2npcs.find(m.mapa[npc.getY() + i*y][npc.getX() + i*x]) != std::string::npos)
+				{
+					mult = i;
+					i = 11;
+				}
+			}
+			if (mult >= 3 && mult <= 10)
+			{
+				p2.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).setHp(p2.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getHp() - (11 - mult));
+				if (p2.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getHp() <= 0)
+				{
+					std::string aux = p2.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getTile();
+					p2.modifyNPCList(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]);
+					m.mapa[npc.getY() + mult*y][npc.getX() + mult*x] = aux;
+				}
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if (p2npcs.find(npc.getIcon()) != std::string::npos)
+		{
+			for (int i = 1; i <= 10; i++)
+			{
+				if (p1npcs.find(m.mapa[npc.getY() + i*y][npc.getX() + i*x]) != std::string::npos)
+				{
+					mult = i;
+					i = 11;
+				}
+			}
+			if (mult >= 3 && mult <= 10)
+			{
+				p1.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).setHp(p1.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getHp() - (11 - mult));
+				if (p1.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getHp() <= 0)
+				{
+					std::string aux = p1.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getTile();
+					p1.modifyNPCList(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]);
+					m.mapa[npc.getY() + mult*y][npc.getX() + mult*x] = aux;
+				}
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
 		}
 	}
 }
