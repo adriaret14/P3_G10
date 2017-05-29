@@ -20,6 +20,7 @@ void main()
 	p1.getNPC(activo).setActive(true);
 	p1.setMovimientos(10);
 	m.print(turno);
+	bool canUndo=false;
 
 
 	do {
@@ -49,6 +50,7 @@ void main()
 						p1.setMovimientos(p1.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						canUndo=true;
 					}					
 					break;
 				case enti::InputKey::A:
@@ -58,6 +60,7 @@ void main()
 						p1.setMovimientos(p1.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						canUndo = true;
 					}					
 					break;
 				case enti::InputKey::S:
@@ -67,6 +70,7 @@ void main()
 						p1.setMovimientos(p1.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						canUndo = true;
 					}
 					break;
 				case enti::InputKey::W:
@@ -76,22 +80,31 @@ void main()
 						p1.setMovimientos(p1.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						canUndo = true;
 					}
 					break;
 				case enti::InputKey::Z:
 					//Deshacer movimiento
-
+					if (canUndo == true)
+					{
+						interacc.deshacerMovimiento(p1.getNPC(activo));
+					}
+					canUndo = false;
+					m.print(turno);
 					break;
 				case enti::InputKey::SPACEBAR:
 					if (p1.getMovimientos() > 0)
 					{
 						//Atacar
+
+						canUndo = false;
 					}
 					break;
 				case enti::InputKey::ENTER:
 					if (p1.getMovimientos() > 0)
 					{
 						//Cambiar NPC
+
 					}
 					else
 					{
@@ -105,6 +118,8 @@ void main()
 						p2.setMovimientos(10);
 						turno = 2;
 					}
+
+					canUndo = false;
 					break;
 				}
 
@@ -122,6 +137,7 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						canUndo = true;
 					}
 					break;
 				case enti::InputKey::A:
@@ -131,6 +147,7 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						canUndo = true;
 					}
 					break;
 				case enti::InputKey::S:
@@ -140,6 +157,7 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						canUndo = true;
 					}
 					break;
 				case enti::InputKey::W:
@@ -149,21 +167,28 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						canUndo = true;
 					}
 					break;
 				case enti::InputKey::Z:
 					//Deshacer movimiento
+
+					canUndo = false;
 					break;
 				case enti::InputKey::SPACEBAR:
 					if (p2.getMovimientos() > 0)
 					{
 						//Atacar
+
+						canUndo = false;
 					}
 					break;
 				case enti::InputKey::ENTER:
 					if (p2.getMovimientos() > 0)
 					{
 						//Cambiar NPC
+
+						canUndo = false;
 					}
 					else
 					{
@@ -176,6 +201,8 @@ void main()
 						p1.setMovimientos(10);
 						turno = 1;
 					}
+
+					canUndo = false;
 					break;
 				}
 
