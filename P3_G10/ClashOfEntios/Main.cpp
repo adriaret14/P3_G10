@@ -20,7 +20,9 @@ void main()
 	p1.getNPC(activo).setActive(true);
 	p1.setMovimientos(10);
 	m.print(turno);
-	bool canUndo=false;
+	std::vector<std::string> jug1;
+	std::vector<std::string> jug2;
+
 
 
 	do {
@@ -50,7 +52,7 @@ void main()
 						p1.setMovimientos(p1.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
-						canUndo=true;
+						p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					}					
 					break;
 				case enti::InputKey::A:
@@ -60,7 +62,7 @@ void main()
 						p1.setMovimientos(p1.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
-						canUndo = true;
+						p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					}					
 					break;
 				case enti::InputKey::S:
@@ -70,7 +72,7 @@ void main()
 						p1.setMovimientos(p1.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
-						canUndo = true;
+						p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					}
 					break;
 				case enti::InputKey::W:
@@ -80,46 +82,43 @@ void main()
 						p1.setMovimientos(p1.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
-						canUndo = true;
+						p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					}
 					break;
 				case enti::InputKey::Z:
 					//Deshacer movimiento
-					if (canUndo == true)
-					{
-						interacc.deshacerMovimiento(p1.getNPC(activo));
-					}
-					canUndo = false;
+					interacc.deshacerMovimiento(p1.getNPC(activo));
 					m.print(turno);
+					p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() - 1);
 					break;
 				case enti::InputKey::SPACEBAR:
 					if (p1.getMovimientos() > 0)
 					{
 						//Atacar
 
-						canUndo = false;
 					}
 					break;
 				case enti::InputKey::ENTER:
 					if (p1.getMovimientos() > 0)
 					{
 						//Cambiar NPC
-
+						jug1.push_back(p1.getNPC(activo).getIcon());
+						p1.getNPC(activo).setFatiga(0 + 1);
+						activo = interacc.cambioNPC(activo, 1);
 					}
 					else
 					{
 						//Fin del turno
-						p1.getNPC(activo).setActive(false);
-						for (std::list<NPC*>::iterator it = p2.getList().begin(); it != p2.getList().end(); it++)
+						for (int i = 0; i < jug1.size(); i++)
 						{
-							//Buscar el npc con menos fatiga
-
+							p1.getNPC(jug1[i]).setFatiga(p1.getNPC(jug1[i]).getFatiga() + 1);
 						}
 						p2.setMovimientos(10);
 						turno = 2;
+						jug1.clear();
+						//FALTA CAMBIAR EL NPC AL DEL PLAYER2
 					}
 
-					canUndo = false;
 					break;
 				}
 
@@ -137,7 +136,6 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
-						canUndo = true;
 					}
 					break;
 				case enti::InputKey::A:
@@ -147,7 +145,6 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
-						canUndo = true;
 					}
 					break;
 				case enti::InputKey::S:
@@ -157,7 +154,6 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
-						canUndo = true;
 					}
 					break;
 				case enti::InputKey::W:
@@ -167,42 +163,34 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
-						canUndo = true;
 					}
 					break;
 				case enti::InputKey::Z:
 					//Deshacer movimiento
 
-					canUndo = false;
 					break;
 				case enti::InputKey::SPACEBAR:
 					if (p2.getMovimientos() > 0)
 					{
 						//Atacar
 
-						canUndo = false;
 					}
 					break;
 				case enti::InputKey::ENTER:
 					if (p2.getMovimientos() > 0)
 					{
 						//Cambiar NPC
-
-						canUndo = false;
+						
 					}
 					else
 					{
 						//Fin del turno
-						p2.getNPC(activo).setActive(false);
-						for (std::list<NPC*>::iterator it = p1.getList().begin(); it != p1.getList().end(); it++)
-						{
-							//Buscar el npc con menos fatiga
-						}
+
 						p1.setMovimientos(10);
 						turno = 1;
 					}
 
-					canUndo = false;
+
 					break;
 				}
 

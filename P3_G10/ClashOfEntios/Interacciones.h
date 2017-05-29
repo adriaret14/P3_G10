@@ -13,8 +13,8 @@ public:
 	void movimientoNPC(NPC &, DIRECCION);				    //Metodo para realizar un movimiento en los NPC, pasando como referencia el NPC y como parametro la direccion
 	void deshacerMovimiento(NPC &);							//Metodo para deshacer un solo movimiento en los NPC, pasando como referencia el NPC
 	void rehacerMovimiento(NPC &);							//Metodo para rehacer un solo movimiento en los NPC, pasando como referencia el NPC
-	bool ataque(NPC &, DIRECCION, ARMA);					//Metodo para realizar un ataque, pasando como refernecia el NPC que ataca y como parametro la direccion a la que ataca
-	std::string cambioNPC(std::string, int);										//MEtodo para cambiar de NPC, procesando la fatiga del NPC anteriormente usado
+	void ataque(NPC &, DIRECCION, ARMA);					//Metodo para realizar un ataque, pasando como refernecia el NPC que ataca y como parametro la direccion a la que ataca
+	std::string cambioNPC(std::string, int);				//Metodo para cambiar de NPC, pasando como parametros el icono del NPC y el jugador actual
 
 private:
 	Player &p1;
