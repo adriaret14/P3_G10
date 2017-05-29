@@ -134,6 +134,7 @@ std::string Interacciones::cambioNPC(std::string npcIcon, int jugador)
 		p1.getNPC(nextNPCicon).setActive(true);
 		return nextNPCicon;
 	case 2:
+		p2.getNPC(npcIcon).setActive(false);
 		npcs = "123456";
 		for (int i = 0; i < 6; i++)
 		{
