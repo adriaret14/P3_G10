@@ -24,7 +24,7 @@ void Interacciones::movimientoNPC(NPC & npc, DIRECCION dir)
 		break;
 	case DIRECCION::D:
 		if (npc.getX() < 73) {
-			if (walkable.find(m.getCell(npc.getX() + 1, npc.getY()))) {
+			if (walkable.find(m.getCell(npc.getX() + 1, npc.getY())) != std::string::npos) {
 				lastMoveX = npc.getX();
 				lastMoveY = npc.getY();
 				npc.setX(npc.getX() + 1);
@@ -32,20 +32,20 @@ void Interacciones::movimientoNPC(NPC & npc, DIRECCION dir)
 		}
 		break;
 	case DIRECCION::S:
-		if (npc.getY() > 0) {
-			if (walkable.find(m.getCell(npc.getX(), npc.getY() - 1))) {
+		if (npc.getY() < 73) {
+			if (walkable.find(m.getCell(npc.getX(), npc.getY() + 1)) != std::string::npos) {
 				lastMoveX = npc.getX();
 				lastMoveY = npc.getY();
-				npc.setY(npc.getY() - 1);
+				npc.setY(npc.getY() + 1);
 			}
 		}
 		break;
 	case DIRECCION::W:
-		if (npc.getX() > 0) {
-			if (walkable.find(m.getCell(npc.getX() - 1, npc.getY()))) {
+		if (npc.getY() > 0) {
+			if (walkable.find(m.getCell(npc.getX(), npc.getY() - 1)) != std::string::npos) {
 				lastMoveX = npc.getX();
 				lastMoveY = npc.getY();
-				npc.setX(npc.getX() - 1);
+				npc.setY(npc.getY() - 1);
 			}
 		}
 		break;
