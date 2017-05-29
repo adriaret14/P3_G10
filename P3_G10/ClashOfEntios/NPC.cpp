@@ -7,7 +7,8 @@ NPC::NPC(std::string c) :
 	nFlechas(10),
 	fatiga(0),
 	icon(c),
-	tile(".")
+	tile("."),
+	isActive(false)
 {
 }
 
@@ -104,4 +105,14 @@ void NPC::setTile(std::string t)
 std::string NPC::getTile()
 {
 	return tile;
+}
+
+void NPC::setActive(bool b)
+{
+	isActive = b;
+}
+
+bool NPC::getActive()
+{
+	return isActive;
 }

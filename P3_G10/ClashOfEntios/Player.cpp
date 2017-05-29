@@ -66,7 +66,7 @@ void Player::modifyNPCList(std::string icono)
 
 	while (it != NPCs.end())
 	{
-		if ((*it)->getIcon == icono)
+		if ((*it)->getIcon() == icono)
 		{
 			NPCs.erase(it);
 			break;

@@ -16,7 +16,7 @@ public:
 
 	std::string getCell(int, int);
 	void updCell(std::string, int, int);
-	void print();
+	void print(int);
 
 
 	std::vector<std::vector<std::string>> mapa;				//Vector de vectores de chars donde esta almacenado el mapa, usamos vectores por la agilidad de acceso por índice

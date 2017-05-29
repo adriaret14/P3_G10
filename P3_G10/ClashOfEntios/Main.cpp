@@ -52,11 +52,12 @@ void main()
 	Map m("default.cfg", p1, p2);
 	int endgame = 0;
 	int turno = 1;
+	std::string activo = "A";
 	//std::cout << p1.getNPC('A').getHp();
-
+	
 	do {
-		m.print();
-		system("cls");
+		m.print(turno);
+		
 		
 		//Comprobacion de si un jugador es el ganador de la partida
 		if (p1.getSizeNPCList() < 1)
@@ -82,7 +83,7 @@ void main()
 				turno = 1;
 			}
 		}
-		
+		system("cls");
 	} while (endgame == 0);
 
 	system("cls");

@@ -8,7 +8,7 @@ Map::Map(std::string url, Player & p1, Player & p2):
 {
 	std::ifstream archivo;
 	std::string linea;
-	mapa = std::vector<std::vector<std::string>>(36, std::vector<std::string>(74));
+	mapa = std::vector<std::vector<std::string>>(36, std::vector<std::string>(73));
 	std::string npcs1 = "ABCDEF";
 	std::string npcs2 = "123456";
 	archivo.open(url);
@@ -63,16 +63,74 @@ void Map::updCell(std::string c, int x, int y)
 	mapa[y][x] = c;
 }
 
-void Map::print()
+void Map::print(int turno)
 {
+	std::string npcs1 = "ABCDEF";
+	std::string npcs2 = "123456";
 	for (int j = 0; j < 36; j++) 
 	{
-		for (int i = 0; i < 74; i++)
+		for (int i = 0; i < 73; i++)
 		{
-			std::cout << mapa[j][i] << " ";
+			if (npcs1.find(mapa[j][i]) != std::string::npos)
+			{
+				if (turno == 1 && player1.getNPC(mapa[j][i]).getActive())
+				{
+					//lila
+					enti::cout << enti::Color::MAGENTA << mapa[j][i];
+				}
+				else if (turno == 1)
+				{
+					//amarillo
+					enti::cout << enti::Color::YELLOW << mapa[j][i];
+				}
+				else
+				{
+					//blanco
+					enti::cout << enti::Color::WHITE << mapa[j][i];
+				}
+			}
+			else if (npcs2.find(mapa[j][i]) != std::string::npos)
+			{
+				if (turno == 2 && player2.getNPC(mapa[j][i]).getActive())
+				{
+					//lila
+					enti::cout << enti::Color::MAGENTA << mapa[j][i];
+				}
+				else if (turno == 2)
+				{
+					//amarillo
+					enti::cout << enti::Color::YELLOW << mapa[j][i];
+				}
+				else
+				{
+					//blanco
+					enti::cout << enti::Color::WHITE << mapa[j][i];
+				}
+			}
+			else
+			{
+				if (mapa[j][i] == "X") 
+				{
+					enti::cout << enti::Color::RED << mapa[j][i];
+				}
+				else if (mapa[j][i] == "O")
+				{
+					enti::cout << enti::Color::LIGHTCYAN << mapa[j][i];
+				}
+				else if (mapa[j][i] == ":")
+				{
+					enti::cout << enti::Color::GREEN << mapa[j][i];
+				}
+				else
+				{
+					enti::cout << enti::Color::WHITE << mapa[j][i];
+				}
+			}
+			enti::cout << enti::Color::WHITE << " ";
 		}
-		std::cout << std::endl;
+		enti::cout << enti::endl;
 	}
+	enti::cout << enti::cend;
 }
 
 
