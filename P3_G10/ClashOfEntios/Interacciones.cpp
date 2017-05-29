@@ -15,7 +15,7 @@ void Interacciones::movimientoNPC(NPC & npc, DIRECCION dir)
 	{
 	case DIRECCION::A:
 		if (npc.getX() > 0) {
-			if (walkable.find(m.getCell(npc.getX() - 1, npc.getY()))) {
+			if (walkable.find(m.getCell(npc.getX() - 1, npc.getY()))!=std::string::npos) {
 				lastMoveX = npc.getX();
 				lastMoveY = npc.getY();
 				npc.setX(npc.getX() - 1);

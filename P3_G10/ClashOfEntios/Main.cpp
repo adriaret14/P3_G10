@@ -3,62 +3,26 @@
 #include "Player.h"
 #include "Map.h"
 #include <list>
+#include "Input.inl.hh"
+#include "Interacciones.h"
 
 
 void main()
 {
-	//Creación de la lista de NPC's del jugador 1
-	/*std::list<NPC*> NPC_Player_A;
-
-	NPC_Player_A.push_back(new NPC('A'));
-	NPC_Player_A.push_back(new NPC('B'));
-	NPC_Player_A.push_back(new NPC('C'));
-	NPC_Player_A.push_back(new NPC('D'));
-	NPC_Player_A.push_back(new NPC('E'));
-	NPC_Player_A.push_back(new NPC('F'));
-
-	//Creación de la lista de NPC's del jugador 2
-	std::list<NPC*> NPC_Player_B;
-
-	NPC_Player_B.push_back(new NPC('1'));
-	NPC_Player_B.push_back(new NPC('2'));
-	NPC_Player_B.push_back(new NPC('3'));
-	NPC_Player_B.push_back(new NPC('4'));
-	NPC_Player_B.push_back(new NPC('5'));
-	NPC_Player_B.push_back(new NPC('6'));
-
-	//Creación de sus iteradores correspondientes
-	std::list<NPC*>::iterator ita = NPC_Player_A.begin();
-	std::list<NPC*>::iterator itb = NPC_Player_B.begin();
-	
-
-	//Bucles para recorrer dicha lista
-	while (ita != NPC_Player_A.end())
-	{
-		std::cout << (*ita)->getIcon() << std::endl;
-		ita++;
-	}
-
-	std::cout << std::endl;
-
-	while (itb != NPC_Player_B.end())
-	{
-		std::cout << (*itb)->getIcon() << std::endl;
-		itb++;
-	}*/
-
+	//Iniciamos las variables y objetos necesarios para el juego
 	Player p1(1);
 	Player p2(0);
 	Map m("default.cfg", p1, p2);
+	Interacciones interacc(p1, p2, m);
 	int endgame = 0;
 	int turno = 1;
 	std::string activo = "A";
-	//std::cout << p1.getNPC('A').getHp();
-	
+	p1.getNPC(activo).setActive(true);
+	m.print(turno);
+
+
 	do {
-		m.print(turno);
-		
-		
+	
 		//Comprobacion de si un jugador es el ganador de la partida
 		if (p1.getSizeNPCList() < 1)
 		{
@@ -75,6 +39,40 @@ void main()
 			{
 				//Juega el player1
 
+				switch (enti::getInputKey())
+				{
+				case enti::InputKey::D:
+					//std::cout << "D";
+					interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::D);
+					system("cls");
+					m.print(turno);
+					break;
+				case enti::InputKey::A:
+					interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::A);
+					system("cls");
+					m.print(turno);
+					break;
+				case enti::InputKey::S:
+					interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::S);
+					system("cls");
+					m.print(turno);
+					break;
+				case enti::InputKey::W:
+					interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::W);
+					system("cls");
+					m.print(turno);
+					break;
+				case enti::InputKey::Z:
+
+					break;
+				case enti::InputKey::SPACEBAR:
+
+					break;
+				case enti::InputKey::ENTER:
+
+					break;
+				}
+
 				turno = 2;
 			}
 			else {
@@ -83,7 +81,6 @@ void main()
 				turno = 1;
 			}
 		}
-		system("cls");
 	} while (endgame == 0);
 
 	system("cls");
