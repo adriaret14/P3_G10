@@ -82,3 +82,10 @@ int Player::getSizeNPCList()
 {
 	return NPCs.size();
 }
+
+std::list<NPC*>& Player::getList()
+{
+	// TODO: insert return statement here
+	return NPCs;
+}
+

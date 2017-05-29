@@ -96,6 +96,12 @@ void main()
 					else
 					{
 						//Fin del turno
+						p1.getNPC(activo).setActive(false);
+						for (std::list<NPC*>::iterator it = p2.getList().begin(); it != p2.getList().end(); it++)
+						{
+							//Buscar el npc con menos fatiga
+
+						}
 						p2.setMovimientos(10);
 						turno = 2;
 					}
@@ -159,8 +165,14 @@ void main()
 					{
 						//Cambiar NPC
 					}
-					elses
+					else
 					{
+						//Fin del turno
+						p2.getNPC(activo).setActive(false);
+						for (std::list<NPC*>::iterator it = p1.getList().begin(); it != p1.getList().end(); it++)
+						{
+							//Buscar el npc con menos fatiga
+						}
 						p1.setMovimientos(10);
 						turno = 1;
 					}

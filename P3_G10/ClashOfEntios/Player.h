@@ -12,6 +12,7 @@ public:
 	int getMovimientos();							//Metodo para consultar el numero de movimientos restantes de un jugador
 	void modifyNPCList(std::string);				//Metodo para modificar la lista de NPCs de un jugador(eliminar), pasando como parametro una cadena con el icono del NPC
 	int getSizeNPCList();							//Metodo para consultar el tamaño de la lista de NPCs de un jugador
+	std::list<NPC*> & getList();					//Metodo para obtener la lista por referencia
 
 private:
 	std::list<NPC*> NPCs;							//Lista de NPCs de cada personaje, usamos lista por su facilidad de eliminar el objeto cuando lo eliminas de la lista, entre otros
