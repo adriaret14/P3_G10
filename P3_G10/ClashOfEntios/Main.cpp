@@ -18,6 +18,7 @@ void main()
 	int turno = 1;
 	std::string activo = "A";
 	p1.getNPC(activo).setActive(true);
+	p1.setMovimientos(10);
 	m.print(turno);
 
 
@@ -42,43 +43,130 @@ void main()
 				switch (enti::getInputKey())
 				{
 				case enti::InputKey::D:
-					//std::cout << "D";
-					interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::D);
-					system("cls");
-					m.print(turno);
+					if (p1.getMovimientos() > 0)
+					{
+						interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::D);
+						p1.setMovimientos(p1.getMovimientos() - 1);
+						system("cls");
+						m.print(turno);
+					}					
 					break;
 				case enti::InputKey::A:
-					interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::A);
-					system("cls");
-					m.print(turno);
+					if (p1.getMovimientos() > 0)
+					{
+						interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::A);
+						p1.setMovimientos(p1.getMovimientos() - 1);
+						system("cls");
+						m.print(turno);
+					}					
 					break;
 				case enti::InputKey::S:
-					interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::S);
-					system("cls");
-					m.print(turno);
+					if (p1.getMovimientos() > 0)
+					{
+						interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::S);
+						p1.setMovimientos(p1.getMovimientos() - 1);
+						system("cls");
+						m.print(turno);
+					}
 					break;
 				case enti::InputKey::W:
-					interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::W);
-					system("cls");
-					m.print(turno);
+					if (p1.getMovimientos() > 0)
+					{
+						interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::W);
+						p1.setMovimientos(p1.getMovimientos() - 1);
+						system("cls");
+						m.print(turno);
+					}
 					break;
 				case enti::InputKey::Z:
+					//Deshacer movimiento
 
 					break;
 				case enti::InputKey::SPACEBAR:
-
+					if (p1.getMovimientos() > 0)
+					{
+						//Atacar
+					}
 					break;
 				case enti::InputKey::ENTER:
-
+					if (p1.getMovimientos() > 0)
+					{
+						//Cambiar NPC
+					}
+					else
+					{
+						//Fin del turno
+						p2.setMovimientos(10);
+						turno = 2;
+					}
 					break;
 				}
 
-				turno = 2;
+				
 			}
 			else {
 				//Juega el player 2
 
-				turno = 1;
+				switch (enti::getInputKey())
+				{
+				case enti::InputKey::D:
+					if (p2.getMovimientos() > 0)
+					{
+						interacc.movimientoNPC(p2.getNPC(activo), DIRECCION::D);
+						p2.setMovimientos(p2.getMovimientos() - 1);
+						system("cls");
+						m.print(turno);
+					}
+					break;
+				case enti::InputKey::A:
+					if (p2.getMovimientos() > 0)
+					{
+						interacc.movimientoNPC(p2.getNPC(activo), DIRECCION::A);
+						p2.setMovimientos(p2.getMovimientos() - 1);
+						system("cls");
+						m.print(turno);
+					}
+					break;
+				case enti::InputKey::S:
+					if (p2.getMovimientos() > 0)
+					{
+						interacc.movimientoNPC(p2.getNPC(activo), DIRECCION::S);
+						p2.setMovimientos(p2.getMovimientos() - 1);
+						system("cls");
+						m.print(turno);
+					}
+					break;
+				case enti::InputKey::W:
+					if (p2.getMovimientos() > 0)
+					{
+						interacc.movimientoNPC(p2.getNPC(activo), DIRECCION::W);
+						p2.setMovimientos(p2.getMovimientos() - 1);
+						system("cls");
+						m.print(turno);
+					}
+					break;
+				case enti::InputKey::Z:
+					//Deshacer movimiento
+					break;
+				case enti::InputKey::SPACEBAR:
+					if (p2.getMovimientos() > 0)
+					{
+						//Atacar
+					}
+					break;
+				case enti::InputKey::ENTER:
+					if (p2.getMovimientos() > 0)
+					{
+						//Cambiar NPC
+					}
+					elses
+					{
+						p1.setMovimientos(10);
+						turno = 1;
+					}
+					break;
+				}
+
 			}
 		}
 	} while (endgame == 0);
