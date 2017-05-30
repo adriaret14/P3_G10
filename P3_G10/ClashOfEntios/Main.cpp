@@ -104,7 +104,9 @@ void main()
 						//Cambiar NPC
 						jug1.push_back(p1.getNPC(activo).getIcon());
 						p1.getNPC(activo).setFatiga(0 + 1);
+						//p1.getNPC(activo).setActive(false);
 						activo = interacc.cambioNPC(activo, 1);
+						//p1.getNPC(activo).setActive(true);
 					}
 					else
 					{
