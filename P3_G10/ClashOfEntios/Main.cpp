@@ -104,9 +104,8 @@ void main()
 						//Cambiar NPC
 						jug1.push_back(p1.getNPC(activo).getIcon());
 						p1.getNPC(activo).setFatiga(0 + 1);
-						//p1.getNPC(activo).setActive(false);
 						activo = interacc.cambioNPC(activo, 1);
-						//p1.getNPC(activo).setActive(true);
+						m.print(turno);
 					}
 					else
 					{
@@ -118,6 +117,8 @@ void main()
 						p2.setMovimientos(10);
 						turno = 2;
 						jug1.clear();
+						activo = interacc.cambioNPC("1", 2);
+						m.print(turno);
 						//FALTA CAMBIAR EL NPC AL DEL PLAYER2
 					}
 
@@ -138,6 +139,7 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					}
 					break;
 				case enti::InputKey::A:
@@ -147,6 +149,7 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					}
 					break;
 				case enti::InputKey::S:
@@ -156,6 +159,7 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					}
 					break;
 				case enti::InputKey::W:
@@ -165,11 +169,14 @@ void main()
 						p2.setMovimientos(p2.getMovimientos() - 1);
 						system("cls");
 						m.print(turno);
+						p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					}
 					break;
 				case enti::InputKey::Z:
 					//Deshacer movimiento
-
+					interacc.deshacerMovimiento(p2.getNPC(activo));
+					m.print(turno);
+					p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() - 1);
 					break;
 				case enti::InputKey::SPACEBAR:
 					if (p2.getMovimientos() > 0)
@@ -182,18 +189,28 @@ void main()
 					if (p2.getMovimientos() > 0)
 					{
 						//Cambiar NPC
-						
+						jug2.push_back(p2.getNPC(activo).getIcon());
+						p2.getNPC(activo).setFatiga(0 + 1);
+						activo = interacc.cambioNPC(activo, 2);
+						m.print(turno);
 					}
 					else
 					{
 						//Fin del turno
-
+						for (int t = 0; t < jug2.size(); t++)
+						{
+							p2.getNPC(jug2[t]).setFatiga(p2.getNPC(jug2[t]).getFatiga() + 1);
+						}
 						p1.setMovimientos(10);
 						turno = 1;
+						jug2.clear();
+						activo = interacc.cambioNPC("A", 1);
+						m.print(turno);
+						//FALTA CAMBIAR EL NPC AL DEL PLAYER2
 					}
 
-
 					break;
+
 				}
 
 			}
