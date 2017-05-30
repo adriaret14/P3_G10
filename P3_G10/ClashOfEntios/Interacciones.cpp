@@ -179,6 +179,7 @@ bool Interacciones::ataque(NPC & npc, DIRECCION dir, ARMA arma)
 			}
 			if (mult >= 3 && mult <= 10)
 			{
+				npc.setFlechas(npc.getFlechas() - 1);
 				p2.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).setHp(p2.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getHp() - (11 - mult));
 				if (p2.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getHp() <= 0)
 				{
@@ -205,6 +206,7 @@ bool Interacciones::ataque(NPC & npc, DIRECCION dir, ARMA arma)
 			}
 			if (mult >= 3 && mult <= 10)
 			{
+				npc.setFlechas(npc.getFlechas() - 1);
 				p1.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).setHp(p1.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getHp() - (11 - mult));
 				if (p1.getNPC(m.mapa[npc.getY() + mult*y][npc.getX() + mult*x]).getHp() <= 0)
 				{

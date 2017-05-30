@@ -95,7 +95,14 @@ void main()
 					if (p1.getMovimientos() > 0)
 					{
 						//Atacar
+						std::string direccion;
+						std::string arma;
 
+						enti::cout << enti::endl << enti::Color::YELLOW << "Direccion del ataque (W,A,S,D): ";
+						std::cin >> direccion;
+						enti::cout << enti::endl << enti::Color::YELLOW << "Arma de ataque (S,B): ";
+						std::cin >> arma;
+						interacc.ataque(p1.getNPC(activo), );
 					}
 					break;
 				case enti::InputKey::ENTER:
