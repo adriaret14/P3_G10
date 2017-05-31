@@ -150,12 +150,12 @@ void main()
 						if (armaReconocida && direccionReconocida)
 						{
 							hit = interacc.ataque(p1.getNPC(activo), direccion, arma);
-						}
-						if (!hit)
-						{
-							enti::cout << enti::endl << enti::Color::RED << "ERROR:" << enti::Color::YELLOW << " ningun enemigo al alcance." << enti::endl;
-							enti::cout << enti::cend;
-						}
+							if (!hit)
+							{
+								enti::cout << enti::endl << enti::Color::RED << "ERROR:" << enti::Color::YELLOW << " ningun enemigo al alcance." << enti::endl;
+								enti::cout << enti::cend;
+							}
+						}						
 					}
 					break;
 				case enti::InputKey::ENTER:
@@ -242,8 +242,70 @@ void main()
 					if (p2.getMovimientos() > 0)
 					{
 						//Atacar
+						bool hit;
+						DIRECCION direccion;
+						char dir;
+						ARMA arma;
+						char arm;
+						bool direccionReconocida = true;
+						bool armaReconocida = true;
 
+						enti::cout << enti::endl << enti::Color::YELLOW << "Direccion del ataque (W,A,S,D): ";
+						enti::cout << enti::cend;
+						std::cin >> dir;
+						if (dir == 'w' || dir == 'W')
+						{
+							direccion = DIRECCION::W;
+						}
+						else if (dir == 'a' || dir == 'A')
+						{
+							direccion = DIRECCION::A;
+						}
+						else if (dir == 's' || dir == 'S')
+						{
+							direccion = DIRECCION::S;
+						}
+						else if (dir == 'd' || dir == 'D')
+						{
+							direccion = DIRECCION::D;
+						}
+						else
+						{
+							enti::cout << enti::endl << enti::Color::RED << "ERROR:" << enti::Color::YELLOW << " direccion no reconocida." << enti::endl;
+							enti::cout << enti::cend;
+							direccionReconocida = false;
+						}
+						if (direccionReconocida)
+						{
+							enti::cout << enti::endl << enti::Color::YELLOW << "Arma de ataque (S,B): ";
+							enti::cout << enti::cend;
+							std::cin >> arm;
+							if (arm == 's' || arm == 'S')
+							{
+								arma = ARMA::SWORD;
+							}
+							else if (arm == 'b' || arm == 'B')
+							{
+								arma = ARMA::BOW;
+							}
+							else
+							{
+								enti::cout << enti::endl << enti::Color::RED << "ERROR:" << enti::Color::YELLOW << " arma no reconocida." << enti::endl;
+								enti::cout << enti::cend;
+								armaReconocida = false;
+							}
+						}
+						if (armaReconocida && direccionReconocida)
+						{
+							hit = interacc.ataque(p2.getNPC(activo), direccion, arma);
+							if (!hit)
+							{
+								enti::cout << enti::endl << enti::Color::RED << "ERROR:" << enti::Color::YELLOW << " ningun enemigo al alcance." << enti::endl;
+								enti::cout << enti::cend;
+							}
+						}						
 					}
+					break;
 					break;
 				case enti::InputKey::ENTER:
 					if (p2.getMovimientos() > 0)
