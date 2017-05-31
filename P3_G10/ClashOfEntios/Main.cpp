@@ -176,8 +176,8 @@ void main()
 						p2.setMovimientos(10);
 						turno = 2;
 						jug1.clear();
-						NPC npc0 = p2.getList().front;
-						activo = interacc.cambioNPC(npc0.getIcon(), 2);
+						NPC *npc0 = p2.getList().front();
+						activo = interacc.cambioNPC(npc0->getIcon(), 2);
 						m.print(turno, activo);
 						//FALTA CAMBIAR EL NPC AL DEL PLAYER2
 					}
@@ -264,8 +264,8 @@ void main()
 						p1.setMovimientos(10);
 						turno = 1;
 						jug2.clear();
-						NPC npc0 = p1.getList().front;
-						activo = interacc.cambioNPC(npc0.getIcon(), 1);
+						NPC* npc0 = p1.getList().front();
+						activo = interacc.cambioNPC(npc0->getIcon(), 1);
 						m.print(turno, activo);
 						//FALTA CAMBIAR EL NPC AL DEL PLAYER2
 					}

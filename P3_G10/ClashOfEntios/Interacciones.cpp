@@ -227,7 +227,7 @@ std::string Interacciones::cambioNPC(std::string npcIcon, int jugador)
 
 	switch (jugador) {
 	case 1:
-		p1.getNPC(npcIcon).setActive(false);
+		//p1.getNPC(npcIcon).setActive(false);
 		npcs = "ABCDEF";
 		for (int i = 0; i < 6; i++) 
 		{
@@ -237,10 +237,10 @@ std::string Interacciones::cambioNPC(std::string npcIcon, int jugador)
 				nextNPCicon = npc;
 			}
 		}
-		p1.getNPC(nextNPCicon).setActive(true);
+		//p1.getNPC(nextNPCicon).setActive(true);
 		return nextNPCicon;
 	case 2:
-		p2.getNPC(npcIcon).setActive(false);
+		//p2.getNPC(npcIcon).setActive(false);
 		npcs = "123456";
 		for (int i = 0; i < 6; i++)
 		{
@@ -250,7 +250,7 @@ std::string Interacciones::cambioNPC(std::string npcIcon, int jugador)
 				nextNPCicon = npc;
 			}
 		}
-		p2.getNPC(nextNPCicon).setActive(true);
+		//p2.getNPC(nextNPCicon).setActive(true);
 		return nextNPCicon;
 	}
 }
