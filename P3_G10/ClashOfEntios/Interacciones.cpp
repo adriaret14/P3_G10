@@ -11,49 +11,40 @@ Interacciones::Interacciones(Player & player1, Player & player2, Map & mapa) :
 
 void Interacciones::movimientoNPC(NPC & npc, DIRECCION dir)
 {
+	int dx;
+	int dy;
 	switch (dir)
 	{
-	case DIRECCION::A:
-		if (npc.getX() > 0) {
-			if (walkable.find(m.getCell(npc.getX() - 1, npc.getY()))!=std::string::npos) {
-				lastMoveX = npc.getX();
-				lastMoveY = npc.getY();
-				npc.setX(npc.getX() - 1);
-			}
-		}
+	case DIRECCION::W:
+		dx = 0;
+		dy = -1;
 		break;
-	case DIRECCION::D:
-		if (npc.getX() < 73) {
-			if (walkable.find(m.getCell(npc.getX() + 1, npc.getY())) != std::string::npos) {
-				lastMoveX = npc.getX();
-				lastMoveY = npc.getY();
-				npc.setX(npc.getX() + 1);
-			}
-		}
+	case DIRECCION::A:
+		dx = -1;
+		dy = 0;
 		break;
 	case DIRECCION::S:
-		if (npc.getY() < 73) {
-			if (walkable.find(m.getCell(npc.getX(), npc.getY() + 1)) != std::string::npos) {
-				lastMoveX = npc.getX();
-				lastMoveY = npc.getY();
-				npc.setY(npc.getY() + 1);
-			}
-		}
+		dx = 0;
+		dy = 1;
 		break;
-	case DIRECCION::W:
-		if (npc.getY() > 0) {
-			if (walkable.find(m.getCell(npc.getX(), npc.getY() - 1)) != std::string::npos) {
-				lastMoveX = npc.getX();
-				lastMoveY = npc.getY();
-				npc.setY(npc.getY() - 1);
-			}
-		}
+	case DIRECCION::D:
+		dx = 1;
+		dy = 0;
 		break;
 	}
-	m.updCell(npc.getTile(), lastMoveX, lastMoveY);
-	npc.setTile(m.getCell(npc.getX(), npc.getY()));
-	m.updCell(npc.getIcon(), npc.getX(), npc.getY());
-	flagDeshacer = 0;
+	if (npc.getX() + dx >= 0 && npc.getX() + dx <= 72 && npc.getY() + dy >= 0 && npc.getY() + dy <= 35)
+	{
+		if (walkable.find(m.getCell(npc.getX() + dx, npc.getY() + dy)) != std::string::npos) {
+			lastMoveX = npc.getX();
+			lastMoveY = npc.getY();
+			npc.setX(npc.getX() + dx);
+			npc.setY(npc.getY() + dy);
+			m.updCell(npc.getTile(), lastMoveX, lastMoveY);
+			npc.setTile(m.getCell(npc.getX(), npc.getY()));
+			m.updCell(npc.getIcon(), npc.getX(), npc.getY());
+			flagDeshacer = 0;
+		}
+	}
 }
 
 void Interacciones::deshacerMovimiento(NPC & npc)

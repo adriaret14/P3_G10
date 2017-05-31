@@ -173,6 +173,7 @@ void main()
 						for (int i = 0; i < jug1.size(); i++)
 						{
 							p1.getNPC(jug1[i]).setFatiga(p1.getNPC(jug1[i]).getFatiga() + 1);
+							p1.getNPC(jug1[i]).setActive(false);
 						}
 						p2.setMovimientos(10);
 						turno = 2;
@@ -260,6 +261,7 @@ void main()
 						for (int t = 0; t < jug2.size(); t++)
 						{
 							p2.getNPC(jug2[t]).setFatiga(p2.getNPC(jug2[t]).getFatiga() + 1);
+							p2.getNPC(jug2[t]).setActive(false);
 						}
 						p1.setMovimientos(10);
 						turno = 1;
