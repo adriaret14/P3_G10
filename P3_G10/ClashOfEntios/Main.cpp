@@ -130,6 +130,7 @@ void main()
 						if (direccionReconocida)
 						{
 							enti::cout << enti::endl << enti::Color::YELLOW << "Arma de ataque (S,B): ";
+							enti::cout << enti::cend;
 							std::cin >> arm;
 							if (arm == 's' || arm == 'S')
 							{
