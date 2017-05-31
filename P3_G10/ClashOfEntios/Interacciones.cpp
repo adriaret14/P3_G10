@@ -224,12 +224,19 @@ std::string Interacciones::cambioNPC(std::string npcIcon, int jugador)
 	std::string npcs;
 	std::string npc;
 	std::string nextNPCicon = npcIcon;
+	std::list<NPC*>::iterator it1 = p1.getList().begin();
+	std::list<NPC*>::iterator it2 = p2.getList().begin();
 
 	switch (jugador) {
 	case 1:
-		//p1.getNPC(npcIcon).setActive(false);
-		npcs = "ABCDEF";
-		for (int i = 0; i < 6; i++) 
+		npcs = "";
+		
+		while (it1 != p1.getList().end())
+		{
+			npcs = npcs + (*it1)->getIcon();
+			it1++;
+		}
+		for (int i = 0; i < p1.getList().size(); i++) 
 		{
 			npc = npcs[i];
 			if (p1.getNPC(npc).getFatiga() < p1.getNPC(nextNPCicon).getFatiga())
@@ -237,12 +244,16 @@ std::string Interacciones::cambioNPC(std::string npcIcon, int jugador)
 				nextNPCicon = npc;
 			}
 		}
-		//p1.getNPC(nextNPCicon).setActive(true);
 		return nextNPCicon;
 	case 2:
-		//p2.getNPC(npcIcon).setActive(false);
-		npcs = "123456";
-		for (int i = 0; i < 6; i++)
+		npcs = "";
+
+		while (it2 != p2.getList().end())
+		{
+			npcs = npcs + (*it2)->getIcon();
+			it2++;
+		}
+		for (int i = 0; i < p2.getList().size(); i++)
 		{
 			npc = npcs[i];
 			if (p2.getNPC(npc).getFatiga() < p2.getNPC(nextNPCicon).getFatiga())
@@ -250,7 +261,6 @@ std::string Interacciones::cambioNPC(std::string npcIcon, int jugador)
 				nextNPCicon = npc;
 			}
 		}
-		//p2.getNPC(nextNPCicon).setActive(true);
 		return nextNPCicon;
 	}
 }
