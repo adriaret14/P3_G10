@@ -24,9 +24,7 @@ public:
 	void setLastY(int);				//Metodo para establecer la coordenada LastY de un NPC
 	int getLastY();					//Metodo para consultar la coordenada LastY de un NPC
 	void setTile(std::string);      //Metodo para guardar el terreno sobre el que se encuentra el npc
-	std::string getTile();			//Metodo para saber el tile sobre el que se encuentra el NPC	
-	void setActive(bool);				//Metodo para establecer isActive de NPC
-	bool getActive();				//Metodo para consultar isActive de NPC
+	std::string getTile();			//Metodo para saber el tile sobre el que se encuentra el NPC
 
 private: 
 	std::string icon;
@@ -38,6 +36,5 @@ private:
 	int y;
 	int lastX;
 	int lastY;
-	bool isActive;
 };
 

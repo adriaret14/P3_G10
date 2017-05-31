@@ -63,7 +63,7 @@ void Map::updCell(std::string c, int x, int y)
 	mapa[y][x] = c;
 }
 
-void Map::print(int turno)
+void Map::print(int turno, std::string activo)
 {
 	std::string npcs1 = "ABCDEF";
 	std::string npcs2 = "123456";
@@ -73,7 +73,7 @@ void Map::print(int turno)
 		{
 			if (npcs1.find(mapa[j][i]) != std::string::npos)
 			{
-				if (turno == 1 && player1.getNPC(mapa[j][i]).getActive())
+				if (turno == 1 && mapa[j][i] == activo)
 				{
 					//lila
 					enti::cout << enti::Color::MAGENTA << mapa[j][i];
@@ -91,7 +91,7 @@ void Map::print(int turno)
 			}
 			else if (npcs2.find(mapa[j][i]) != std::string::npos)
 			{
-				if (turno == 2 && player2.getNPC(mapa[j][i]).getActive())
+				if (turno == 2 && mapa[j][i] == activo)
 				{
 					//lila
 					enti::cout << enti::Color::MAGENTA << mapa[j][i];
