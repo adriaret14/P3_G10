@@ -5,6 +5,7 @@
 #include <list>
 #include "Input.inl.hh"
 #include "Interacciones.h"
+#include <Windows.h>
 
 
 void main()
@@ -49,7 +50,7 @@ void main()
 					{
 						interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::D);
 						p1.setMovimientos(p1.getMovimientos() - 1);
-						system("cls");
+						//system("cls");
 						m.print(turno, activo);
 						p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					}					
@@ -59,7 +60,7 @@ void main()
 					{
 						interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::A);
 						p1.setMovimientos(p1.getMovimientos() - 1);
-						system("cls");
+						//system("cls");
 						m.print(turno, activo);
 						p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					}					
@@ -69,7 +70,7 @@ void main()
 					{
 						interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::S);
 						p1.setMovimientos(p1.getMovimientos() - 1);
-						system("cls");
+						//system("cls");
 						m.print(turno, activo);
 						p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					}
@@ -79,7 +80,7 @@ void main()
 					{
 						interacc.movimientoNPC(p1.getNPC(activo), DIRECCION::W);
 						p1.setMovimientos(p1.getMovimientos() - 1);
-						system("cls");
+						//system("cls");
 						m.print(turno, activo);
 						p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					}
@@ -89,6 +90,24 @@ void main()
 					interacc.deshacerMovimiento(p1.getNPC(activo));
 					m.print(turno, activo);
 					p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() - 1);
+					break;
+				case enti::InputKey::z:
+					//Deshacer movimiento
+					interacc.deshacerMovimiento(p1.getNPC(activo));
+					m.print(turno, activo);
+					p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() - 1);
+					break;
+				case enti::InputKey::X:
+					//Deshacer movimiento
+					interacc.rehacerMovimiento(p1.getNPC(activo));
+					m.print(turno, activo);
+					p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
+					break;
+				case enti::InputKey::x:
+					//Deshacer movimiento
+					interacc.rehacerMovimiento(p1.getNPC(activo));
+					m.print(turno, activo);
+					p1.getNPC(activo).setFatiga(p1.getNPC(activo).getFatiga() + 1);
 					break;
 				case enti::InputKey::SPACEBAR:
 					if (p1.getMovimientos() > 0)
@@ -129,6 +148,7 @@ void main()
 						}
 						if (direccionReconocida)
 						{
+							system("cls");
 							enti::cout << enti::endl << enti::Color::YELLOW << "Arma de ataque (S,B): ";
 							enti::cout << enti::cend;
 							std::cin >> arm;
@@ -177,7 +197,7 @@ void main()
 						p2.setMovimientos(10);
 						turno = 2;
 						jug1.clear();
-						if (p2.getSizeNPCList() < 1)
+						if (p2.getSizeNPCList() >= 1)
 						{
 							activo = interacc.cambioNPC((*p2.getList().begin())->getIcon(), 2);
 						}						
@@ -200,7 +220,7 @@ void main()
 					{
 						interacc.movimientoNPC(p2.getNPC(activo), DIRECCION::D);
 						p2.setMovimientos(p2.getMovimientos() - 1);
-						system("cls");
+						//system("cls");
 						m.print(turno, activo);
 						p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					}
@@ -210,7 +230,7 @@ void main()
 					{
 						interacc.movimientoNPC(p2.getNPC(activo), DIRECCION::A);
 						p2.setMovimientos(p2.getMovimientos() - 1);
-						system("cls");
+						//system("cls");
 						m.print(turno, activo);
 						p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					}
@@ -220,7 +240,7 @@ void main()
 					{
 						interacc.movimientoNPC(p2.getNPC(activo), DIRECCION::S);
 						p2.setMovimientos(p2.getMovimientos() - 1);
-						system("cls");
+						//system("cls");
 						m.print(turno, activo);
 						p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					}
@@ -230,7 +250,7 @@ void main()
 					{
 						interacc.movimientoNPC(p2.getNPC(activo), DIRECCION::W);
 						p2.setMovimientos(p2.getMovimientos() - 1);
-						system("cls");
+						//system("cls");
 						m.print(turno, activo);
 						p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					}
@@ -240,6 +260,24 @@ void main()
 					interacc.deshacerMovimiento(p2.getNPC(activo));
 					m.print(turno, activo);
 					p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() - 1);
+					break;
+				case enti::InputKey::z:
+					//Deshacer movimiento
+					interacc.deshacerMovimiento(p2.getNPC(activo));
+					m.print(turno, activo);
+					p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() - 1);
+					break;
+				case enti::InputKey::X:
+					//Deshacer movimiento
+					interacc.rehacerMovimiento(p2.getNPC(activo));
+					m.print(turno, activo);
+					p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
+					break;
+				case enti::InputKey::x:
+					//Deshacer movimiento
+					interacc.rehacerMovimiento(p2.getNPC(activo));
+					m.print(turno, activo);
+					p2.getNPC(activo).setFatiga(p2.getNPC(activo).getFatiga() + 1);
 					break;
 				case enti::InputKey::SPACEBAR:
 					if (p2.getMovimientos() > 0)
@@ -280,6 +318,7 @@ void main()
 						}
 						if (direccionReconocida)
 						{
+							system("cls");
 							enti::cout << enti::endl << enti::Color::YELLOW << "Arma de ataque (S,B): ";
 							enti::cout << enti::cend;
 							std::cin >> arm;
@@ -345,13 +384,17 @@ void main()
 		}
 	} while (endgame == 0);
 
-	system("cls");
+	//system("cls");
 
 	if (endgame == 1)
 	{
-		std::cout << "Ganador el PLAYER 1";
+		enti::cout << "Ganador el PLAYER 1";
+		enti::cout << enti::cend;
+		system("pause");
 	}
 	else {
-		std::cout << "Ganador el PLAYER 2";
+		enti::cout << "Ganador el PLAYER 2";
+		enti::cout << enti::cend;
+		system("pause");
 	}
 }
